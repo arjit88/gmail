@@ -27,8 +27,9 @@ const Message = () => {
 
       <div className="flex-1 ml-4">
         <p className="text-gray-600 truncate inline-block max-w-full">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint, quos
-          iste! Numquam ullam enim ad.
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore
+          eligendi autem incidunt error dicta commodi a, debitis ea explicabo
+          dignissimos.
         </p>
       </div>
       <div className="flex-none text-gray-400 text-sm">13:28</div>
