@@ -3,27 +3,27 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import gmail from "../assets/gmail.png";
 import profile from "../assets/profile.png";
 import { IoIosSearch } from "react-icons/io";
-import { CiCircleQuestion } from "react-icons/ci";
 import { IoSettingsOutline } from "react-icons/io5";
 import { PiDotsNineBold } from "react-icons/pi";
 import Avatar from "react-avatar";
+import { GrCircleQuestion } from "react-icons/gr";
 
 const NavBar = () => {
   return (
     <div className="flex items-center justify-between mx-3 h-16">
       <div className="flex items-center gap-10">
         <div className="flex items-center gap-2">
-          <div className="p-3 rounded-full hover:bg-gray-100 cursor-pointer">
+          <div className="p-3 rounded-full hover:bg-gray-200 cursor-pointer">
             <RxHamburgerMenu size={"20px"} />
           </div>
-          <img className="w-8" src={gmail} alt="Gmail_logo" />
-          <h1 className="text-2xl text-gray-500 font-medium">Gmail</h1>
+          <img className="w-9" src={gmail} alt="Gmail_logo" />
+          <h1 className="text-2xl text-gray-600 font-normal">Gmail</h1>
         </div>
       </div>
 
       <div className="md:block hidden w-[50%] mr-60">
         <div className="flex items-center bg-[#EAF1FB] px-2 py-3 rounded-full">
-          <IoIosSearch size={"24px"} className="text-gray-700" />
+          <IoIosSearch size={"22px"} className="text-gray-700 mx-1" />
           <input
             type="text"
             className="rounded-full w-full bg-transparent outline-none px-1"
@@ -34,19 +34,19 @@ const NavBar = () => {
 
       <div className="md:block hidden">
         <div className="flex items-center gap-2">
-          <div className="p-3 rounded-full hover:bg-gray-100 cursor-pointer">
-            <CiCircleQuestion size={"24px"} />
+          <div className="p-3 rounded-full hover:bg-gray-200 cursor-pointer">
+            <GrCircleQuestion size={"24px"} />
           </div>
 
-          <div className="p-3 rounded-full hover:bg-gray-100 cursor-pointer">
+          <div className="p-3 rounded-full hover:bg-gray-200 cursor-pointer">
             <IoSettingsOutline size={"24px"} />
           </div>
 
-          <div className="p-3 rounded-full hover:bg-gray-100 cursor-pointer">
+          <div className="p-3 rounded-full hover:bg-gray-200 cursor-pointer">
             <PiDotsNineBold size={"24px"} />
           </div>
 
-          <div className="cursor-pointer">
+          <div className="p-3 rounded-full hover:bg-gray-200 cursor-pointer">
             <Avatar src={profile} size="24" round={true} />
           </div>
         </div>
