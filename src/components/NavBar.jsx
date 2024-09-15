@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import gmail from "../assets/gmail.png";
 import profile from "../assets/profile.png";
@@ -7,8 +7,17 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { PiDotsNineBold } from "react-icons/pi";
 import Avatar from "react-avatar";
 import { GrCircleQuestion } from "react-icons/gr";
+import { useDispatch } from "react-redux";
+import { setSearchText } from "../redux/appSlice";
 
 const NavBar = () => {
+  const [input, setInput] = useState("");
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setSearchText(input));
+  }, [input]);
+
   return (
     <div className="flex items-center justify-between mx-3 h-16">
       <div className="flex items-center gap-10">
@@ -26,6 +35,8 @@ const NavBar = () => {
           <IoIosSearch size={"22px"} className="text-gray-700 mx-1" />
           <input
             type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
             className="rounded-full w-full bg-transparent outline-none px-1"
             placeholder="Search Mail"
           />
