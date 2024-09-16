@@ -31,6 +31,10 @@ const Message = ({ email }) => {
         <div className="flex-none text-gray-300">
           <RiStarLine className="w-5 h-5" />
         </div>
+
+        <div>
+          <h1 className="font-semibold">{email?.to}</h1>
+        </div>
       </div>
 
       <div className="flex-1 ml-4">

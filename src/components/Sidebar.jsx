@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BiSend } from "react-icons/bi";
 import { BsFileEarmark } from "react-icons/bs";
 import { HiPencil } from "react-icons/hi";
@@ -13,6 +13,7 @@ import { setOpen } from "../redux/appSlice";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
+  const [mailTypeSelected, setMailTypeSelected] = useState(0);
 
   const sideBarItems = [
     {
@@ -57,7 +58,12 @@ const Sidebar = () => {
         {sideBarItems.map((item, index) => (
           <div
             key={index}
-            className="flex items-center gap-4 pl-6 py-1 rounded-r-full hover:cursor-pointer hover:bg-gray-200 my-2"
+            className={`my-2 ${
+              mailTypeSelected === index
+                ? "flex items-center gap-4 pl-6 py-1 rounded-r-full bg-blue-200 text-blue-950 hover:cursor-pointer"
+                : "flex items-center gap-4 pl-6 py-1 rounded-r-full hover:cursor-pointer hover:bg-gray-200 my-2"
+            }`}
+            onClick={() => setMailTypeSelected(index)}
           >
             {item.icon}
             <p>{item.text}</p>
