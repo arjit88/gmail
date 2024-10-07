@@ -19,7 +19,7 @@ const Login = () => {
         })
       );
     } catch (error) {
-      console.error(error);
+      console.error("Error signing in with Google:", error.message);
     }
   };
 

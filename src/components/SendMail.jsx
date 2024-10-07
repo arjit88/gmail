@@ -14,6 +14,7 @@ const SendMail = () => {
 
   const open = useSelector((store) => store.appSlice.open);
   const dispatch = useDispatch();
+  const { user } = useSelector((store) => store.appSlice); // Get the current user's info
 
   const changeHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -21,18 +22,23 @@ const SendMail = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    await addDoc(collection(db, "emails"), {
-      to: formData.to,
-      subject: formData.subject,
-      message: formData.message,
-      createdAt: serverTimestamp(),
-    });
-    dispatch(setOpen(false));
-    setFormData({
-      to: "",
-      subject: "",
-      message: "",
-    });
+    try {
+      await addDoc(collection(db, "emails"), {
+        to: formData.to,
+        subject: formData.subject,
+        message: formData.message,
+        createdAt: serverTimestamp(),
+        userEmail: user.email, // Add the userEmail field
+      });
+      dispatch(setOpen(false));
+      setFormData({
+        to: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Error sending email: ", error);
+    }
   };
 
   return (

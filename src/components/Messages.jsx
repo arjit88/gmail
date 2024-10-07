@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setEmails } from "../redux/appSlice";
 
 const Messages = () => {
-  const { emails, searchText } = useSelector((store) => store.appSlice);
+  const { emails, searchText, user } = useSelector((store) => store.appSlice);
   const [tempEmails, setTempEmails] = useState(emails);
   const dispatch = useDispatch();
 
@@ -18,13 +18,18 @@ const Messages = () => {
         id: doc.id,
       }));
 
-      dispatch(setEmails(allEmails));
+      // Filter emails by current user's email
+      const userEmails = allEmails.filter(
+        (email) => email.userEmail === user.email
+      );
+
+      dispatch(setEmails(userEmails));
     });
 
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [user.email]); // Add user.email as a dependency
 
   useEffect(() => {
     const filteredEmail = emails?.filter((email) => {
